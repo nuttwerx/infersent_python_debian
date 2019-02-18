@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN pip install -U nltk
 
 # prepare the environment
-RUN mkdir infersent/dataset && mkdir infersent/encoder
+RUN mkdir -p /infersent/dataset && mkdir -p /infersent/encoder
 
 #Download the vectors
 RUN mkdir /infersent/dataset/GloVe && \
