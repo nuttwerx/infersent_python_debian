@@ -6,7 +6,8 @@ RUN apt-get update && apt-get upgrade -y
 RUN pip install -U nltk
 
 # prepare the environment
-RUN mkdir -p /infersent/dataset && mkdir -p /infersent/encoder
+COPY infersent ./infersent
+RUN mkdir /infersent/dataset && mkdir /infersent/encoder
 
 #Download the vectors
 RUN mkdir /infersent/dataset/GloVe && \
@@ -24,4 +25,3 @@ RUN rm -rf /infersent/dataset/GloVe/glove.840B.300d.zip && \
 RUN curl -Lo /infersent/encoder/infersent1.pickle https://dl.fbaipublicfiles.com/infersent/infersent1.pkl
 RUN curl -Lo /infersent/encoder/infersent2.pickle https://dl.fbaipublicfiles.com/infersent/infersent2.pkl
 
-COPY infersent .
